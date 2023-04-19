@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from rest_framework import status
 
-from ..models import Product
+from ..models import Product, Review
 from ..serializers import ProductSerializer
 from ..products import products
 
@@ -80,3 +80,43 @@ def uploadImage(request):
     product.save()
 
     return Response("Image was uploaded")
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createProductReviews(request, pk):
+    user = request.user
+    product = Product.objects.get(_id=pk)
+    data = request.data
+
+    already_exists = product.review_set.filter(user=user).exists()
+
+    if already_exists:
+        return Response({'detail': 'Product already reviewed'}, status=status.HTTP_400_BAD_REQUEST)
+
+    elif data['rating'] == 0:
+        return Response({'detail': 'Please select a rating'}, status=status.HTTP_400_BAD_REQUEST)
+
+    else:
+        review = Review.objects.create(
+            user=user,
+            product=product,
+            name=user.first_name,
+            rating=data['rating'],
+            comment=data['comment'],
+        )
+
+        reviews = product.review_set.all()
+        product.numReviews = len(reviews)
+
+        total=0
+        for i in reviews:
+            total+=i.rating
+
+        product.rating = total / len(reviews)
+        product.save()
+
+        return Response("Review Added")
+
+
+
