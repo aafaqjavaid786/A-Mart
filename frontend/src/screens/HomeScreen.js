@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { useSearchParams, useLocation } from 'react-router-dom'
 import { listProducts } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -14,8 +15,13 @@ function HomeScreen() {
   const productList = useSelector(state => state.productList)
   const {error, loading, products} = productList
 
+  const location = useLocation()
+  let keyword = location.search
+
+  // console.log(keyword)
+
   useEffect(() => {
-    dispatch(listProducts())
+    dispatch(listProducts(keyword))
 
     // async function fetchProducts(){
     //   const {data} = await axios.get('http://127.0.0.1:8000/api/products/')
@@ -23,7 +29,7 @@ function HomeScreen() {
     // }
 
     // fetchProducts()
-  }, [dispatch])
+  }, [dispatch, keyword])
   return (
     <div>
       <h1>Latest Products</h1>
