@@ -145,7 +145,7 @@ function ProductScreen() {
                     <ListGroup.Item className="d-flex justify-content-center">
                       <Button
                         onClick={addToCartHandler}
-                        className="btn-block"
+                        className="btn-block w-100"
                         disabled={product.countInStock == 0}
                         type="button"
                       >

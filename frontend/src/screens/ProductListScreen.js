@@ -61,7 +61,7 @@ function ProductListScreen() {
         <Col className="text-right">
           <h1>Products</h1>
         </Col>
-        <Col>
+        <Col className="d-flex justify-content-end">
           <Button className="my-3" onClick={createProductHandler}>
             <i className="fas fa-plus"></i> Create Product
           </Button>

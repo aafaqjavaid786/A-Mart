@@ -132,10 +132,10 @@ function PlaceOrderScreen() {
                         {error && <Message variant='danger'>{error}</Message>}
                     </ListGroup.Item>
 
-                    <ListGroup.Item>
+                    <ListGroup.Item className="d-flex justify-content-center">
                         <Button
                         type='button'
-                        className='btn-block'
+                        className="btn-block w-100"
                         disabled = {cart.cartItems.length === 0}
                         onClick={placeOrder}>
                             Place Order

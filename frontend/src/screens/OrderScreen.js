@@ -195,10 +195,10 @@ function OrderScreen() {
                     {loadingDeliver && <Loader />}
 
                     {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                        <ListGroup.Item>
+                        <ListGroup.Item className="d-flex justify-content-center">
                             <Button
                             type='button'
-                            className='btn btn-block'
+                            className="btn-block w-100"
                             onClick={deliverHandler}>
                                 Mark as Delivered
                             </Button>

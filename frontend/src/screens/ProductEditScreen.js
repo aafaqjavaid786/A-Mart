@@ -99,7 +99,9 @@ function ProductEditScreen() {
     }
   return (
     <div>
-      <Link to="/admin/productlist">Go Back</Link>
+      <Link to="/admin/productlist" className="btn btn-light my-3">
+        Go Back
+      </Link>
       <FormContainer>
         <h1>Edit product</h1>
 
@@ -150,7 +152,6 @@ function ProductEditScreen() {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-
             </Form.Group>
 
             <Form.Group controlId="image-file">
@@ -160,8 +161,6 @@ function ProductEditScreen() {
               ></Form.Control>
 
               {uploading && <Loader />}
-
-
             </Form.Group>
 
             <Form.Group controlId="stock">

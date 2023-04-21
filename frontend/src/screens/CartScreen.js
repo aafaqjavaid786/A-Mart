@@ -111,10 +111,10 @@ function CartScreen() {
             </ListGroup.Item>
           </ListGroup>
 
-          <ListGroup.Item>
+          <ListGroup.Item className="d-flex justify-content-center"> 
             <Button
               type="button"
-              className="btn-block"
+              className="btn-block w-100"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
             >
