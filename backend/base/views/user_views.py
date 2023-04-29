@@ -45,6 +45,8 @@ def registerUser(request):
 
         serializer = UserSerializerWithToken(user, many=False)
 
+        print("running!")
+
         return Response(serializer.data)
     
     except:
