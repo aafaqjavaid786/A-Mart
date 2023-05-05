@@ -139,7 +139,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse('postgres://a_mart_user:B2Dq6lfYBOqYrI488Li2RHaa2zESqxg2@dpg-ch6ff9bhp8u9bo2a8vtg-a.oregon-postgres.render.com/a_mart')
 }
 
 
